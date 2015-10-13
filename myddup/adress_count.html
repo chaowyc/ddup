@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} 天天向上{% endblock %}
+
+{% block pagename %} <h2>Schedule-地点数据</h2> {% endblock %} 
+{% block content %}  
+<div>
+<div class="col-sm-3 col-md-offset-1">
+   {% for item in diff_ad%}
+      <p><label class="control-label">在{{item}}发生事件有</label></p>
+   {% endfor %}
+   
+</div>
+
+<div class="col-sm-2">
+   {% for n in v_count%}
+      <p><label class="control-label">{{n}}件 占总事件比例为</label></p>
+   {% endfor %}
+   
+</div>
+
+<div class="col-sm-1">
+	{% for n in p_count%}
+		<p><label class="control-label">{{n}}%</label></p>
+    {% endfor %}
+</div>
+
+<div class="col-sm-5" >
+  {% for n in p_count%} 
+   <div class="progress">
+      <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="{{n}}" aria-valuemin="0" aria-valuemax="{{do_count}}" style="width: {{n}}%">
+          <span class="sr-only">40% Complete (success)</span>
+      </div>
+   </div>
+  {% endfor %}
+</div>
+</div>
+{% endblock %}

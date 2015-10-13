@@ -1,0 +1,47 @@
+
+{% extends "base.html" %}
+
+{% block title %} 天天向上 {% endblock %}
+
+{% block pagename %} <h2>Schedule-查找</h2> {% endblock %} 
+
+{% block content %} 
+	<table class = "table table-striped">
+		<div>找到{{ result_len }}条记录。</div>
+			{% if result_len > 0 %} 
+			<tr>
+				<td class="active">序号</td>
+				<td class="active">日期</td>
+				<td class="active">时间</td>
+				<td class="active">事件</td>
+				<td class="active">地点</td>
+				<td class="active">人员</td>
+				<td class="active">是/否</td>
+	            <td colspan=2 class="active">操作</td>
+				
+			</tr>
+			{% for p in result_list %}
+			<tr {% if forloop.counter|divisibleby:"2" %} {% endif %}>
+				<td class="success">{{forloop.counter}}</td>
+				<td class="success">{{ p.time1 }}</td>
+				<td class="success">{{ p.time2 }}</td>
+				<td class="success">{{ p.do }}</td>
+				<td class="success">{{ p.adress }}</td>
+				<td class="success">{{ p.people }}</td>
+				 {%if item.yesorno == False %}
+					<td class="success">
+						<a href='/flag/?id={{item.id}}' class="btn btn-info btn-lg"><span class="glyphicon glyphicon-question-sign"></span></a>
+					</td>
+				{% else %}
+					<td class="success">
+						<a href='/flag/?id={{item.id}}' class="btn btn-success btn-lg"><span class="glyphicon glyphicon-ok-sign"></span></a>
+					</td>
+				{% endif %}
+					<td class="success"><a href='/edit/?id={{item.id}}' class="btn btn-primary " role="button">修改</a></td>
+					<td class="success"><a href='/delete/?id={{item.id}}' class="btn btn-danger " role="button">删除</a></td>
+			</tr>
+			{% endfor %}
+         {% endif %}
+		
+	</table>
+{% endblock %}

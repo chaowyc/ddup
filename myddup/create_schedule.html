@@ -1,0 +1,74 @@
+
+{% extends "base.html" %}
+
+{% block title %} 天天向上{% endblock %}
+
+{% block pagename %} <h2>Schedule-添加</h2> {% endblock %} 
+{% block content %} 
+<div class="container", align="center">
+	<form method="POST" class="form-horizontal" role="form">
+		<div class="form-group form-group-lg col-md-offset-3">
+			<label for="inputEmail3" class="col-sm-2 control-label">日期</label>
+			<div class="col-sm-6">
+				<input type="date" name="time1" class="form-control" id="inputEmail3" placeholder="日期">
+		    </div>
+		</div>
+		<div class="form-group form-group-lg col-md-offset-3">
+			<label for="inputPassword3" class="col-sm-2 control-label">时间</label>
+			<div class="col-sm-6">
+				<input type="time" name="time2" class="form-control" id="inputPassword3" placeholder="时间">
+			</div>
+		</div>
+		<div class="form-group form-group-lg col-md-offset-3">
+			<label for="inputPassword3" class="col-sm-2 control-label">事件</label>
+			<div class="col-sm-6">
+				<input type="text" name="do" class="form-control" id="inputPassword3" placeholder="事件">
+			</div>
+		</div>
+		<div class="form-group form-group-lg col-md-offset-3">
+			<label for="inputPassword3" class="col-sm-2 control-label">地点</label>
+			<div class="col-sm-6">
+				<input type="text" name="adress" class="form-control" id="inputPassword3" placeholder="地点">
+			</div>
+		</div>
+		<div class="form-group form-group-lg col-md-offset-3">
+			<label for="inputPassword3" class="col-sm-2 control-label">人员</label>
+			<div class="col-sm-6">
+				<input type="text" name="people" class="form-control" id="inputPassword3" placeholder="人员">
+			</div>
+		</div>
+		<div class="form-group form-group-lg">
+          <div class="col-sm-offset-2 col-sm-6">
+           <button type="submit" class="btn btn-primary">确认</button>
+          </div>
+        </div>                      
+</form>
+</div>
+<!---
+	<form method="POST" onsubmit="alert('保存成功')"> {% csrf_token %}
+		<tr>
+		    <th>项目</th><th>填写信息</th>
+		</tr>
+		<tr>
+		    <td>日期</td><td><input type="text" name="time1" id="time1" value="" /><input name="" type="button" onclick="MyCalendar.SetDate(this,document.getElementById('time1'))" value="选择" /></td>
+		</tr>
+		<tr>
+			<td>时间</td><td><input name="time2" type="time" class="text"></td>
+		</tr>
+		<tr>
+			<td>事件</td><td><input name="do" type="text" class="text"></td>
+		</tr>
+		<tr>
+			<td>地点</td><td><input name="adress" type="text" class="text"></td>
+		</tr>
+		<tr>
+			<td>人员</td><td><input name="people" type="text" class="text"></td>
+		</tr>
+	<tr>
+		<td><input type="reset" value="重填" class="button"></td>
+		<td><input type="submit" value="确定" class="button"></td>
+	</tr>
+	</form>
+	</table>
+</div>                            --->
+{% endblock %}

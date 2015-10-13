@@ -1,0 +1,77 @@
+
+{% extends "base.html" %}
+
+{% block title %} 天天向上{% endblock %}
+ {% block pagename %} <h2>Schedule-总览</h2> {% endblock %} 
+{% block heading %} 
+{% endblock %}
+
+{% block content %} 
+
+  
+<div >共{{ count }}条记录</div>
+<table class = "table table-striped">
+<tr>
+    <th colspan=6>记录</th>
+	<th colspan=1>完成</th>
+	<th colspan=2>操作</th>
+	  <tr>
+	    <td class="active">序号</td>
+	    <td class="active">日期</td>
+		<td class="active">时间</td>
+	    <td class="active">事件</td>
+		<td class="active">地点</td>
+		<td class="active">人员</td>
+		<td class="active">是/否</td>
+		<td class="active"></td>
+		<td class="active"></td>
+	 </tr>
+</tr>
+{% for item in list_items %}
+  <tr>
+     <tr {% if forloop.counter|divisibleby:"2" %} {% endif %}>
+	   <td class="success">{{ forloop.counter }}</td>
+	   <td class="success">{{item.time1}}</td>
+	   <td class="success">{{item.time2}}</td>
+	   <td class="success">{{item.do}}</td>
+	   <td class="success">{{item.adress}}</td>
+	   <td class="success">{{item.people}}</td>
+	   {%if item.yesorno == False %}
+		<td class="success">
+		<a href='/flag/?id={{item.id}}' class="btn btn-info btn-lg">
+			<span class="glyphicon glyphicon-question-sign"></span> 
+		</a>
+		</td>
+	    {% else %}
+		<td class="success">
+		<a href='/flag/?id={{item.id}}' class="btn btn-success btn-lg">
+			<span class="glyphicon glyphicon-ok-sign"></span> 
+		</a>
+		</td>
+	    {% endif %}
+		<td class="success"><a href='/edit/?id={{item.id}}' class="btn btn-primary " role="button">修改</a></td>
+	   <td class="success"><a href='/delete/?id={{item.id}}' class="btn btn-danger " role="button">删除</a></td>
+	   
+	 </tr>
+  </tr>
+{% endfor %}
+</table>
+
+<div align="center">
+{% if list_items.has_previous %}
+    <a class='paginator' title='上一页' href='?page={{ list_items.previous_page_number }}'><span>&lt;&lt;</span></a>
+{% endif %}
+
+ {% for page in list_items.paginator.page_range %}
+     {% if page = list_items.number %}
+         <a class='paginator_current' title='当前页:{{ page }}'><span>{{ page }}</span></a>
+     {% else %}
+         <a class='paginator' href='?page={{ page }}' title='{{ page }}'><span>{{ page }}</span></a>
+     {% endif %}
+ {% endfor %}
+
+{% if list_items.has_next %}
+     <a class='paginator' title='下一页' href='?page={{ list_items.next_page_number }}'><span>&gt;&gt;</span></a>
+ {% endif %}
+</div>
+{% endblock %}

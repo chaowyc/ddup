@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %} 天天向上{% endblock %}
+
+{% block pagename %} <h2>Schedule-查找</h2> {% endblock %} 
+{% block content %} 
+	<table id="peoplelist">
+		<tr>
+		<th colspan=11>找到{{ result_len }}条记录。</td>
+		</tr>
+		{% if result_len > 0 %}
+			<tr>
+				<td>序号</td>
+				<td>日期</td>
+				<td>时间</td>
+				<td>事件</td>
+				<td>地点</td>
+				<td>人员</td>
+	            <td>操作</td>
+			</tr>
+			{% for p in result_list %}
+			<tr {% if forloop.counter|divisibleby:"2" %} class="alt" {% endif %}>
+				<td>{{ forloop.counter }}</td>
+				<td>{{ p.time1 }}</td>
+				<td>{{p.time2 }}</td>
+				<td>{{ p.do }}</td>
+				<td>{{ p.adress }}</td>
+				<td>{{ p.people }}</td>
+				<td><a href="/delete/?id={{people.id}}">删除</a></td>
+				<td><a href="/update/?id={{people.id}}">更新</a></td>
+			</tr>
+			{% endfor %}
+		{% endif %}
+		
+	</table>
+{% endblock %}

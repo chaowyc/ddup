@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %} 天天向上{% endblock %}
+
+{% block pagename %} <h2>Schedule-饼状图数据</h2> {% endblock %} 
+{% block content %} 
+			
+
+
+<div align="center">
+    <canvas id="myChart" width="400" height="400" ></canvas>
+	<span class="label label-warning">已完成{{do_count}}</span>
+    <span class="label label-info">未完成{{count}}</span>
+</div>
+<script>
+	
+	var data =[ 
+	{
+		value: {{do_count}},
+		color:"#F38630"
+	},
+	{
+		value : {{count}},
+		color : "#69D2E7"
+	}			
+];
+
+var Pieoption = {
+	//Boolean - Whether we should show a stroke on each segment
+	segmentShowStroke : true,
+	
+	//String - The colour of each segment stroke
+	segmentStrokeColor : "#fff",
+	
+	//Number - The width of each segment stroke
+	segmentStrokeWidth : 2,
+	
+	//Boolean - Whether we should animate the chart	
+	animation : true,
+	
+	//Number - Amount of animation steps
+	animationSteps : 100,
+	
+	//String - Animation easing effect
+	animationEasing : "easeOutBounce",
+	
+	//Boolean - Whether we animate the rotation of the Pie
+	animateRotate : true,
+
+	//Boolean - Whether we animate scaling the Pie from the centre
+	animateScale : false,
+	
+	//Function - Will fire on animation completion.
+	onAnimationComplete : null
+};
+var ctx = document.getElementById("myChart").getContext("2d");
+var myNewChart = new Chart(ctx).Pie(data,Pieoption);
+</script>
+
+{% endblock %}

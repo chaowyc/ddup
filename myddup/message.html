@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!-- 这个网页专用于显示一些简单信息。 -->
+<html>
+<head>
+
+      <style type="text/css"> 
+        #summary { background: #e0ebff; }
+        #summary h2 { font-weight: normal; color: #666; }
+        #explanation { background:#eee; }
+        #content { background:#f6f6f6; }
+        #summary table { border:none; background:transparent; }
+      </style> 
+{% load staticfiles %}
+	<title>{{title}}</title>
+</head>
+<body>
+<div id="logo"><a href="/"><img src="{% static 'logo.png' %}" alt="logo" /></a>&nbsp;|&nbsp;&nbsp;提示</div>
+<hr />
+	<p>
+	<h1 class="message">{{ message }}</h1>
+	</p>
+	<div id="singlebutton">
+	<a href="{{ url }}">{{ urltext }}</a>
+	</div>
+</body>
+</html>
